@@ -194,23 +194,35 @@ console.log(onlyBreakfast)
 //The type should be 'above' or 'below' to indicate whether you want to get foods with values that are above or below the given number for the given property
 
 
-
-function filterByProperty(){
-    let filteredArr = foodArr.filter(function(property, num, aboveOrBelow){
-        if (aboveOrBelow === `above`){
-            if (property > num){
-            }
+const filterByProperty = (property, number, type) => {
+    let filtered = foodArr.filter ((foodObj) => {
+        if (type === `above`){
+            return foodObj[property] > number       //we use the bracket notation bcs it is expecting a string allowing us to insert another variable from our function 
         }
-        if (aboveOrBelow === `below`){
-            if (property < num) {
-            }
+        else if (type === `below`) {
+            return foodObj[property] < number 
         }
     })
-    return filteredArr
-} 
+    return filtered 
+}
+
+console.log(filterByProperty(`rating`, 4 , `above`))
+// function filterByProperty(){
+//     let filteredArr = foodArr.filter(function(property, num, aboveOrBelow){
+//         if (aboveOrBelow === `above`){
+//             if (property > num){
+//             }
+//         }
+//         if (aboveOrBelow === `below`){
+//             if (property < num) {
+//             }
+//         }
+//     })
+//     return filteredArr
+// } 
 
 
-console.log(filterByProperty(foodArr.rating, 6, `above`))
+// console.log(filterByProperty(foodArr.rating, 6, `above`))
 /*
     Invoke the `filterByProperty` function passing
     in a value for each paramter.
